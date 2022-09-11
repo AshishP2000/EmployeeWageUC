@@ -14,19 +14,25 @@ namespace EmployeeWage
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //UC-2 Calculate Daily Employee Wage
+            //UC-3 Add Parttime Employee and Wage
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
-            const int EMP_PRESENT = 1;
+            const int FULL_TIME = 1;
+            const int PART_TIME = 2;
             const int EMP_RATE_PER_HR = 20;
             int empHrs = 0,empWage=0;
             Random random = new Random();
             //Generate
-            int empCheck = random.Next(0, 2);
+            int empCheck = random.Next(0, 3);
             Console.WriteLine("Random Value: " + empCheck);
-            if (EMP_PRESENT == empCheck)
+            if (FULL_TIME == empCheck)
             {
                 empHrs = 8;
-                Console.WriteLine("Employee is Present");
+                Console.WriteLine("Full Time Employee is Present");
+            }
+            else if (PART_TIME == empCheck)
+            {
+                empHrs = 4;
+                Console.WriteLine("Part Time Employee is Present");
             }
             else
             {
