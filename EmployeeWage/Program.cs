@@ -14,7 +14,20 @@ namespace EmployeeWage
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Employee Wage Computation!...");
+            //UC-1 Find Employee is Present or Absent
+            int empPresent = 1;
+            Random random = new Random();
+            //Generate
+            int empCheck = random.Next(0, 2);
+            Console.WriteLine("Random Value: " + empCheck);
+            if (empPresent == empCheck)
+            {
+                Console.WriteLine("Employee is Present");
+            }
+            else
+            {
+                Console.WriteLine("Employee is Absent");
+            }
             Console.ReadLine();
         }
     }
