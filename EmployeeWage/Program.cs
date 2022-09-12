@@ -14,7 +14,7 @@ namespace EmployeeWage
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //UC-3 Add Parttime Employee and Wage
+            //UC-4 Using Switch Case
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
             const int FULL_TIME = 1;
             const int PART_TIME = 2;
@@ -24,21 +24,23 @@ namespace EmployeeWage
             //Generate
             int empCheck = random.Next(0, 3);
             Console.WriteLine("Random Value: " + empCheck);
-            if (FULL_TIME == empCheck)
+
+            switch (empCheck)
             {
-                empHrs = 8;
-                Console.WriteLine("Full Time Employee is Present");
+                case FULL_TIME:
+                    empHrs = 8;
+                    Console.WriteLine("Full Time Employee is Present");
+                    break;
+                case PART_TIME:
+                    empHrs = 4;
+                    Console.WriteLine("Part Time Employee is Present");
+                    break;
+                default:
+                    empHrs = 0;
+                    Console.WriteLine("Employee is Absent");
+                    break;
             }
-            else if (PART_TIME == empCheck)
-            {
-                empHrs = 4;
-                Console.WriteLine("Part Time Employee is Present");
-            }
-            else
-            {
-                empHrs = 0;
-                Console.WriteLine("Employee is Absent");
-            }
+            
             empWage = empHrs*EMP_RATE_PER_HR;
             Console.WriteLine("Employee Wage per Day is: "+empWage);
             Console.ReadLine();
