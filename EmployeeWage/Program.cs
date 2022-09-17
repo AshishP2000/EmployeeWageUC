@@ -14,19 +14,21 @@ namespace EmployeeWage
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //UC-7 Write class method to calculate Employee Wage
-            CalculateEmpWage();
+            //UC-8 Compute Employee Wage for Multiple Companies
+            CalculateEmpWage("Google",20,30,120);
+            CalculateEmpWage("Microsoft", 30, 40, 150);
+            CalculateEmpWage("Infosys", 20, 40, 120);
             Console.ReadLine();
         }
 
-        public static void CalculateEmpWage()
+        public static void CalculateEmpWage(string COMPANY,int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
         {
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
             const int FULL_TIME = 1;
             const int PART_TIME = 2;
-            const int EMP_RATE_PER_HR = 20;
-            const int MAX_WORKING_DAYS = 20;
-            const int MAX_WORKING_HRS = 100;
+            //const int EMP_RATE_PER_HR = 20;
+            //const int MAX_WORKING_DAYS = 20;
+            //const int MAX_WORKING_HRS = 100;
             int empHrs = 0, empWage = 0, totalEmpWage = 0, day = 1, totalHrs = 0;
             Random random = new Random();//Generate Random number
 
@@ -51,13 +53,14 @@ namespace EmployeeWage
                         break;
                 }
                 empWage = empHrs * EMP_RATE_PER_HR;
-                Console.WriteLine("Employee Wage per on day{0} and Hrs:{1} is: {2} ", day, totalHrs, empWage);
+                //Console.WriteLine("Comapany Name: {0}",COMPANY);
+                //Console.WriteLine("Employee Wage per on day{0} and Hrs:{1} is: {2} ", day, totalHrs, empWage);
                 totalEmpWage += empWage;
                 day++;
                 totalHrs += empHrs;
             }
-
-            Console.WriteLine("\nEmployee Wage for Month is: " + totalEmpWage);
+            Console.WriteLine("\nComapany Name: {0}", COMPANY);
+            Console.WriteLine("Employee Wage for Month is: " + totalEmpWage);
         }
     }
 }
