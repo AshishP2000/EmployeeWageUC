@@ -11,12 +11,15 @@ namespace EmployeeWage
         
         static void Main(string[] args)
         {
-            //UC-9 Ability to Save total Wage for each company
+            //UC-10 Ability to Manage Employee Wage of multiple companies
 
-            EmpWageComputation dmart = new EmpWageComputation("dmart", 20, 30, 120);
-            dmart.CalculateEmpWage();
-            EmpWageComputation reliance = new EmpWageComputation("relaince", 30, 40, 150);
-            reliance.CalculateEmpWage();
+            EmpWageComputation empWage = new EmpWageComputation();
+            empWage.addCompanyEmpWage("dmart", 20, 30, 120);
+            empWage.addCompanyEmpWage("relaince", 50, 80, 100);
+            empWage.addCompanyEmpWage("Deloitte",65,84,67);
+            
+            empWage.CalculateEmpWage();
+            
 
             Console.ReadLine();
         }

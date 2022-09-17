@@ -13,23 +13,31 @@ namespace EmployeeWage
         /// </summary>
         /// <param name="args"></param>
         /// 
-        public string COMPANY;
-        public int EMP_RATE_PER_HR, MAX_WORKING_DAYS, MAX_WORKING_HRS;
+        private int numOfCompany = 0;
+        private CompanyEmpWage[] companyEmpWageArray;
+
 
         public EmpWageComputation()
         {
-
+            this.companyEmpWageArray = new CompanyEmpWage[5];    
         }
 
-        public EmpWageComputation(string COMPANY, int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
+        public void addCompanyEmpWage(string COMPANY, int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
         {
-            this.COMPANY = COMPANY;
-            this.EMP_RATE_PER_HR = EMP_RATE_PER_HR;
-            this.MAX_WORKING_DAYS = MAX_WORKING_DAYS;
-            this.MAX_WORKING_HRS = MAX_WORKING_HRS;
+            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(COMPANY, EMP_RATE_PER_HR, MAX_WORKING_DAYS, MAX_WORKING_HRS);
+            numOfCompany++;
         }
 
         public void CalculateEmpWage()
+        {
+            for (int i = 0; i < numOfCompany; i++)
+            {
+                companyEmpWageArray[i].setTotalEmpwage(this.CalculateEmpWage(this.companyEmpWageArray[i]));
+                Console.WriteLine(this.companyEmpWageArray[i].toString());
+            }
+        }
+
+        private int CalculateEmpWage(CompanyEmpWage companyEmpWage)
         {
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
             const int FULL_TIME = 1;
@@ -37,7 +45,7 @@ namespace EmployeeWage
             int empHrs = 0, empWage = 0, totalEmpWage = 0, day = 1, totalHrs = 0;
             Random random = new Random();//Generate Random number
 
-            while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_HRS)
+            while (day <= companyEmpWage.MAX_WORKING_DAYS && totalHrs <= companyEmpWage.MAX_WORKING_HRS)
             {
                 int empCheck = random.Next(0, 3);
                 //Console.WriteLine("Random Value: " + empCheck);
@@ -46,26 +54,23 @@ namespace EmployeeWage
                 {
                     case FULL_TIME:
                         empHrs = 8;
-                        //Console.WriteLine("Full Time Employee is Present");
+                        
                         break;
                     case PART_TIME:
                         empHrs = 4;
-                        //Console.WriteLine("Part Time Employee is Present");
+                        
                         break;
                     default:
                         empHrs = 0;
-                        //Console.WriteLine("Employee is Absent");
+                        
                         break;
                 }
-                empWage = empHrs * EMP_RATE_PER_HR;
-                //Console.WriteLine("Comapany Name: {0}",COMPANY);
-                //Console.WriteLine("Employee Wage per on day{0} and Hrs:{1} is: {2} ", day, totalHrs, empWage);
+                empWage = empHrs * companyEmpWage.EMP_RATE_PER_HR;
                 totalEmpWage += empWage;
                 day++;
                 totalHrs += empHrs;
             }
-            Console.WriteLine("\nComapany Name: {0}", COMPANY);
-            Console.WriteLine("Total Employee Wage is: " + totalEmpWage);
+            return totalEmpWage;
         }
 
     }
