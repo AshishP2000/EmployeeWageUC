@@ -15,20 +15,26 @@ namespace EmployeeWage
         static void Main(string[] args)
         {
             //UC-6 Calculating Wages till a condition of total working hours or days is reached for a month
+            CalculateEmpWage();
+            Console.ReadLine();
+        }
+
+        public static void CalculateEmpWage()
+        {
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
             const int FULL_TIME = 1;
             const int PART_TIME = 2;
             const int EMP_RATE_PER_HR = 20;
             const int MAX_WORKING_DAYS = 20;
             const int MAX_WORKING_HRS = 100;
-            int empHrs = 0,empWage=0,totalEmpWage=0,day=1,totalHrs=0;
+            int empHrs = 0, empWage = 0, totalEmpWage = 0, day = 1, totalHrs = 0;
             Random random = new Random();//Generate Random number
-            
-            while(day<=MAX_WORKING_DAYS && totalHrs<=MAX_WORKING_HRS)
+
+            while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_HRS)
             {
                 int empCheck = random.Next(0, 3);
                 //Console.WriteLine("Random Value: " + empCheck);
-                
+
                 switch (empCheck)
                 {
                     case FULL_TIME:
@@ -45,14 +51,13 @@ namespace EmployeeWage
                         break;
                 }
                 empWage = empHrs * EMP_RATE_PER_HR;
-                Console.WriteLine("Employee Wage per on day{0} and Hrs:{1} is: {2} " ,day,totalHrs, empWage);
+                Console.WriteLine("Employee Wage per on day{0} and Hrs:{1} is: {2} ", day, totalHrs, empWage);
                 totalEmpWage += empWage;
                 day++;
-                totalHrs+=empHrs;
+                totalHrs += empHrs;
             }
-            
-            Console.WriteLine("Employee Wage for Month is: "+ totalEmpWage);
-            Console.ReadLine();
+
+            Console.WriteLine("\nEmployee Wage for Month is: " + totalEmpWage);
         }
     }
 }
