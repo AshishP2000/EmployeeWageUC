@@ -14,7 +14,7 @@ namespace EmployeeWage
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //UC-6 Calculating Wages till a condition of total working hours or days is reached for a month
+            //UC-7 Write class method to calculate Employee Wage
             CalculateEmpWage();
             Console.ReadLine();
         }
