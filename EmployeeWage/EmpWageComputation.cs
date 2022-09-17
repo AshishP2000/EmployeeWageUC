@@ -6,22 +6,34 @@ using System.Threading.Tasks;
 
 namespace EmployeeWage
 {
-    public class Program
+    public class EmpWageComputation
     {
         /// <summary>
         /// Defines Entry Point of Application
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
+        /// 
+        //UC-9 Ability to Save total Wage for each company
+        public string COMPANY;
+        public int EMP_RATE_PER_HR, MAX_WORKING_DAYS, MAX_WORKING_HRS;
+
+        public EmpWageComputation()
         {
-            //UC-8 Compute Employee Wage for Multiple Companies
-            CalculateEmpWage("Google",20,30,120);
-            CalculateEmpWage("Microsoft", 30, 40, 150);
-            CalculateEmpWage("Infosys", 20, 40, 120);
-            Console.ReadLine();
+            
         }
 
-        public static void CalculateEmpWage(string COMPANY,int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
+        public EmpWageComputation(string COMPANY, int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
+        {
+            this.COMPANY = COMPANY;
+            this.EMP_RATE_PER_HR = EMP_RATE_PER_HR;
+            this.MAX_WORKING_DAYS = MAX_WORKING_DAYS;
+            this.MAX_WORKING_HRS=MAX_WORKING_HRS;
+        }
+
+
+
+
+        public void CalculateEmpWage()
         {
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
             const int FULL_TIME = 1;
@@ -60,7 +72,20 @@ namespace EmployeeWage
                 totalHrs += empHrs;
             }
             Console.WriteLine("\nComapany Name: {0}", COMPANY);
-            Console.WriteLine("Employee Wage for Month is: " + totalEmpWage);
+            Console.WriteLine("Total Employee Wage is: " + totalEmpWage);
+        }
+
+        static void Main(string[] args)
+        {
+            //UC-9 Ability to Save total Wage for each company
+
+            EmpWageComputation dmart = new EmpWageComputation("dmart", 20, 30, 120);
+            dmart.CalculateEmpWage();
+            EmpWageComputation reliance = new EmpWageComputation("relaince", 30, 40, 150);
+            reliance.CalculateEmpWage();
+
+
+            Console.ReadLine();
         }
     }
 }
