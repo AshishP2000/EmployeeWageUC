@@ -11,7 +11,7 @@ namespace EmployeeWage
         
         static void Main(string[] args)
         {
-            //UC-11 Refractor to have list of multiple companies to manage Employee Wage
+            //UC-12 Store Daily wage along with total wage
 
             EmpWageComputation empWage = new EmpWageComputation();
             empWage.AddCompanyEmpWage("dmart", 20, 30, 120);

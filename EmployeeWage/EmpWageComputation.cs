@@ -15,17 +15,19 @@ namespace EmployeeWage
         /// 
         
         List<CompanyEmpWage> companyEmpWagesList;
-
+        Dictionary<string, CompanyEmpWage> CompanyToEmpwage;//Dictionary
 
         public EmpWageComputation()
         {
             companyEmpWagesList = new List<CompanyEmpWage>();
+            CompanyToEmpwage = new Dictionary<string, CompanyEmpWage>();
         }
 
         public void AddCompanyEmpWage(string Comapny, int Emp_rate_per_hr, int Max_working_days, int Max_working_hr)
         {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(Comapny, Emp_rate_per_hr, Max_working_days, Max_working_hr);
             companyEmpWagesList.Add(companyEmpWage);
+            CompanyToEmpwage.Add(Comapny,companyEmpWage);
         }
 
         public void IterateCalculateEmpWage()
