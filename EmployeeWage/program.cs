@@ -11,14 +11,14 @@ namespace EmployeeWage
         
         static void Main(string[] args)
         {
-            //UC-10 Ability to Manage Employee Wage of multiple companies
+            //UC-11 Refractor to have list of multiple companies to manage Employee Wage
 
             EmpWageComputation empWage = new EmpWageComputation();
-            empWage.addCompanyEmpWage("dmart", 20, 30, 120);
-            empWage.addCompanyEmpWage("relaince", 50, 80, 100);
-            empWage.addCompanyEmpWage("Deloitte",65,84,67);
-            
-            empWage.CalculateEmpWage();
+            empWage.AddCompanyEmpWage("dmart", 20, 30, 120);
+            empWage.AddCompanyEmpWage("relaince", 50, 80, 100);
+            empWage.AddCompanyEmpWage("Deloitte",65,84,67);
+
+            empWage.IterateCalculateEmpWage();
             
 
             Console.ReadLine();

@@ -8,26 +8,26 @@ namespace EmployeeWage
 {
     public class CompanyEmpWage
     {
-        public string COMPANY;
-        public int EMP_RATE_PER_HR, MAX_WORKING_DAYS, MAX_WORKING_HRS,TOTAL_EMP_WAGE;
+        public string Comapny;
+        public int Emp_rate_per_hr, Max_working_days, Max_working_hr,Total_emp_wage;
 
 
-        public CompanyEmpWage(string COMPANY, int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
+        public CompanyEmpWage(string Comapny, int Emp_rate_per_hr, int Max_working_days, int Max_working_hr)
         {
-            this.COMPANY = COMPANY;
-            this.EMP_RATE_PER_HR = EMP_RATE_PER_HR;
-            this.MAX_WORKING_DAYS = MAX_WORKING_DAYS;
-            this.MAX_WORKING_HRS = MAX_WORKING_HRS;
+            this.Comapny = Comapny;
+            this.Emp_rate_per_hr = Emp_rate_per_hr;
+            this.Max_working_days = Max_working_days;
+            this.Max_working_hr = Max_working_hr;
         }
 
         public void setTotalEmpwage(int TOTAL_EMP_WAGE)
         {
-            this.TOTAL_EMP_WAGE=TOTAL_EMP_WAGE;
+            this.Total_emp_wage = TOTAL_EMP_WAGE;
         }
 
         public string toString()
         {
-            return "Total Empwage for Company: " + this.COMPANY + " is: " + this.TOTAL_EMP_WAGE;
+            return "Total Empwage for Company: " + this.Comapny + " is: " + this.Total_emp_wage;
         }
 
     }

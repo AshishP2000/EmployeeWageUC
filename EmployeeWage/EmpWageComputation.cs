@@ -13,31 +13,32 @@ namespace EmployeeWage
         /// </summary>
         /// <param name="args"></param>
         /// 
-        private int numOfCompany = 0;
-        private CompanyEmpWage[] companyEmpWageArray;
+        
+        List<CompanyEmpWage> companyEmpWagesList;
 
 
         public EmpWageComputation()
         {
-            this.companyEmpWageArray = new CompanyEmpWage[5];    
+            companyEmpWagesList = new List<CompanyEmpWage>();
         }
 
-        public void addCompanyEmpWage(string COMPANY, int EMP_RATE_PER_HR, int MAX_WORKING_DAYS, int MAX_WORKING_HRS)
+        public void AddCompanyEmpWage(string Comapny, int Emp_rate_per_hr, int Max_working_days, int Max_working_hr)
         {
-            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(COMPANY, EMP_RATE_PER_HR, MAX_WORKING_DAYS, MAX_WORKING_HRS);
-            numOfCompany++;
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(Comapny, Emp_rate_per_hr, Max_working_days, Max_working_hr);
+            companyEmpWagesList.Add(companyEmpWage);
         }
 
-        public void CalculateEmpWage()
+        public void IterateCalculateEmpWage()
         {
-            for (int i = 0; i < numOfCompany; i++)
+            for(int i=0;i<companyEmpWagesList.Count;i++)
             {
-                companyEmpWageArray[i].setTotalEmpwage(this.CalculateEmpWage(this.companyEmpWageArray[i]));
-                Console.WriteLine(this.companyEmpWageArray[i].toString());
+                int totalWage=CalculateEmpWage(companyEmpWagesList[i]);
+                companyEmpWagesList[i].setTotalEmpwage(totalWage);
+                
             }
         }
 
-        private int CalculateEmpWage(CompanyEmpWage companyEmpWage)
+        public int CalculateEmpWage(CompanyEmpWage companyEmpWage)
         {
             //we are not changing values of variable EMP_PRESENT and EMP_RATE_HR thats why we decalred it as constatnt
             const int FULL_TIME = 1;
@@ -45,7 +46,7 @@ namespace EmployeeWage
             int empHrs = 0, empWage = 0, totalEmpWage = 0, day = 1, totalHrs = 0;
             Random random = new Random();//Generate Random number
 
-            while (day <= companyEmpWage.MAX_WORKING_DAYS && totalHrs <= companyEmpWage.MAX_WORKING_HRS)
+            while (day <= companyEmpWage.Max_working_days && totalHrs <= companyEmpWage.Max_working_hr)
             {
                 int empCheck = random.Next(0, 3);
                 //Console.WriteLine("Random Value: " + empCheck);
@@ -65,13 +66,16 @@ namespace EmployeeWage
                         
                         break;
                 }
-                empWage = empHrs * companyEmpWage.EMP_RATE_PER_HR;
+                empWage = empHrs * companyEmpWage.Emp_rate_per_hr;
                 totalEmpWage += empWage;
                 day++;
                 totalHrs += empHrs;
             }
+            Console.WriteLine("Total Emp wage of {0} is {1}",companyEmpWage.Comapny,totalEmpWage);
             return totalEmpWage;
         }
+
+        
 
     }
 }
